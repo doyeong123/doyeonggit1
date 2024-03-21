@@ -1,0 +1,56 @@
+package ch12.com.filter;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class AuthenFilter implements Filter {
+	
+//	소멸단계에 필요한 메서드 오버라이딩
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		Filter.super.destroy();
+	}
+//	로드 및 초기화에 필요한 메서드 오버라이딩
+	@Override
+	public void  init(FilterConfig filterConfig) throws ServletException{
+		System.out.println("Frlter01 초기화....");
+	}
+//	해당 매핑이 된 jsp 페이지에 대해 해당 값이 입력되었을 때 수행되어야 할 제어문 작성
+	@Override
+//	요청,응답,체인 작성
+	public void doFilter(ServletRequest request, ServletResponse response,FilterChain filterChain) throws IOException, ServletException
+	{
+//		수행중 가이드 작성
+		System.out.println("Filter01.jsp 수행...");
+//		변수 설정
+		String name= request.getParameter("name");
+//		해당 변수의 값이 null이거나 공백일 경우 수행
+		if(name==null || name.equals(""))
+		{
+//			인코딩 작업
+			response.setCharacterEncoding("UTF-8");
+//			페이지 인코딩 
+			response.setContentType("text/html; charset=UTF-8");
+//			out.println과 동일하나 jsp 사용할 수 있는 메서드 사용
+			PrintWriter writer = response.getWriter();
+//			조건문에 따른 가이드 메세지 작성
+			String message ="입력된 name 값은 null입니다.";
+//			가이드 메세지 출력
+			writer.println(message);
+//			값 반환
+			return;
+		}
+//		연속적으로 필터가 있을 경우 다음 필터로 제어를 넘길 수 있도록
+//		FilterChain 객체 타입의 dofilter() 메서드 작성
+//		dofilter의 매개변수로 filterchain 묶기
+		filterChain.doFilter(request, response);
+	}
+
+}

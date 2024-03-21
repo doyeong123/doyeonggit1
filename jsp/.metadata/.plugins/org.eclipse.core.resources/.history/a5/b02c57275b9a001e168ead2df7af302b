@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app >
+<!-- 1번 -->
+	<!-- <security-role>
+		<role-name>role1</role-name>	
+	</security-role>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>JSPBook</web-resource-name>
+			<url-pattern>/ch10/security01.jsp</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description></description>
+			<role-name>manager</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config> -->
+
+<!-- 2번 form -->
+	 <!-- <security-role>
+		<role-name>role1</role-name>	
+	</security-role>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>JSPBook</web-resource-name>
+			<url-pattern>/ch10/security01.jsp</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description></description>
+			<role-name>manager</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/ch10/login.jsp</form-login-page>
+			<form-error-page>/ch10/login_failed.jsp</form-error-page>
+		</form-login-config>
+	</login-config> -->
+	<!-- <display-name>jspbook2</display-name>
+	  <welcome-file-list>
+	    <welcome-file>index.html</welcome-file>
+	    <welcome-file>index.htm</welcome-file>
+	    <welcome-file>./ch09/locail03.jsp</welcome-file>
+	    <welcome-file>default.html</welcome-file>
+	    <welcome-file>default.htm</welcome-file>
+	    <welcome-file>default.jsp</welcome-file>
+	  </welcome-file-list> -->
+	<!--  <error-page>
+	 	<error-code>500</error-code>
+	 	<location>/ch11/errorCode_error.jsp</location>
+	 </error-page>
+	  -->
+
+<!-- 		
+	 filter 작성
+	 <filter>
+		 filter name 작성
+	 	<filter-name>Filter01</filter-name>
+		filter 적용 클래스 작성- 자바는 '/' 말고 '.'을 사용, .java 사용x
+	 	<filter-class>ch12.com.filter.AuthenFilter</filter-class>
+	 </filter>
+		filter-mapping 적용할 jsp페이지 작성
+	 <filter-mapping>
+		Filter name 작성
+	 	<filter-name>Filter01</filter-name>
+		url-pattern 을 통해 해당 페이지에 필터장착.
+	 	<url-pattern>/ch12/filter01_process.jsp</url-pattern>
+	 </filter-mapping> 
+	 -->
+<!-- 	
+ 		filter작성 
+	 <filter>
+	 	filter-name작성
+	 	<filter-name>Filter02</filter-name>
+	 	필터 클래스 경로 지정.
+	 	<filter-class>ch12.com.filter.InitParameterFilter</filter-class>
+	 	id,passwd 변수에 value값 지정.
+	 	<init-param>
+	 		<param-name>param1</param-name>
+	 		<param-value>admin</param-value>
+	 	</init-param>
+	 	<init-param>
+	 		<param-name>param2</param-name>
+	 		<param-value>1234</param-value>
+	 	</init-param>
+	 </filter>
+	 필터 매핑 작성
+	 <filter-mapping>
+	 	filter name 지정
+	 	<filter-name>Filter02</filter-name>
+	 	url-pattern mapping 대상 지정.
+	 	<url-pattern>/ch12/filter02_process.jsp</url-pattern>
+	 </filter-mapping>  
+	  -->
+	 
+	 필터 작성
+	<filter>
+	필터 네임 작성
+	 	<filter-name>Filter02_2</filter-name>
+	 	해당 필터의 java 클래스 지정/경로
+	 	<filter-class>ch12.com.filter.LogFileFilter</filter-class>
+	 	필터에 필요한 변수,값 작성
+	 	<init-param>
+	 		변수 이름을 filename으로 설정
+	 		<param-name>filename</param-name>
+	 		값을 해당 경로로 설정
+	 		<param-value>C:\\logs\\monitor.log</param-value>
+	 	</init-param>
+	 </filter>
+	 필터 매핑 지정
+	 <filter-mapping>
+	 	필터 이름 지정
+	 	<filter-name>Filter02_2</filter-name>
+	 	필터를 사용할 jsp page 지정 
+	 	<url-pattern>/ch12/filter02_process.jsp</url-pattern>
+	 </filter-mapping> 
+</web-app>

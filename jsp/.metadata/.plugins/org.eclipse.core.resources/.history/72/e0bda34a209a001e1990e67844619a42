@@ -1,0 +1,55 @@
+package ch12.com.filter;
+
+import java.io.IOException;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class InitParameterFilter implements Filter{
+
+	
+	private FilterConfig filterConfig = null;
+	private ServletRequest request;
+
+
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		// TODO Auto-generated method stub
+		Filter.super.init(filterConfig);
+		System.out.println("Filter02 초기화..");
+		this.filterConfig  = filterConfig;
+	}
+
+
+	@Override
+	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
+			throws IOException, ServletException {
+		// TODO Auto-generated method stub
+		System.out.println("Filter02 수행중...");
+		
+		
+		String id = request.getParameter("id");
+		String passwd = request.getParameter("passwd");
+		
+		String param1 = filterConfig.getInitParameter("param1");
+		String param2 = filterConfig.getInitParameter("param2");
+		
+		String message;
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter writer =arg0 respnse.getWriter();
+	}
+
+	
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		Filter.super.destroy();
+		System.out.println("Filter02 해제...");
+	}
+
+}

@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	function checked()
+	{
+		alert("아이디 : " +document.LoginForm.id.value + "\n"
+				"비밀번호 : " + document.LoginForm.passwd.value);
+	}
+</script>
+<body>
+	<form name="loginForm">
+		<input type="text" name="id">
+		<input type="text" name="passwd">
+		<input type="submit" value="다시 전송" onclick="checkform()">
+	</form>
+</body>
+</html>

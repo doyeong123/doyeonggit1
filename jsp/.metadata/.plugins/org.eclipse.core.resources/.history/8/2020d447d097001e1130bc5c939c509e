@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	function checkLogin()
+	{
+		var form = document.loginForm;
+		var length1 = from.id.value.length;
+		if(length1 <4 || length1 >12)
+		{
+			alert("아이디는 4~12자 이내로 입력 가능합니다!")
+			form.id.select();
+			return;			
+		}
+		
+		var length2 = form.passwd.value.length;
+		
+		if(length2<4)
+		{
+			alert("아이디는 4~12자 이내로 입력 가능합니다!")
+			form.id.select();
+			return;			
+		}
+		
+	}
+</script>
+<body>
+	<form name="loginForm">
+		<P> 아이디 : <input type="text" name="id">
+		<P> 비밀번호 : <input type="password" name="passwd">
+		<p><input type="submit" value="전송" onclick="checkLogin()">		
+	</form>
+</body>
+</html>
